@@ -2,6 +2,99 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/zhaoshouren/react-uswds/compare/v5.1.1...6.0.0) (2023-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Unify icon usage ([#2411](https://github.com/zhaoshouren/react-uswds/issues/2411))
+* Previous deprecated features and props have been removed. Please see the following guidance for affected components:
+    - Accordion: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+    - Alert: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+    - Button: 
+      - `accent` has been removed. Use `accentStyle` instead.
+      - `big`, `small`, and `size="small"` have been removed. Use `size="big"` or do not define the `size` prop for default sizing.
+    - CollectionHeading: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+    - Footer/Address: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+    - Footer/Footer: `big`, `medium`, and `slim` props have been removed. Use the `size` prop instead.
+    - Footer/FooterNav: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+    - Footer/Logo: `big`, `medium`, and `small` props have been removed. Use the `size` prop instead.
+    - Search: `big`, and `small` props have been removed. Use the `size` prop instead.
+    - Fieldset: `legendSrOnly` has been removed. Use `legendStyle="srOnly"` instead.
+    - TextInput: `error`, and `success` props have been removed. Use the `validationStatus` prop instead.
+    - header/NavList: `primary`, `secondary`, `subnav`, `megamenu`, and `footerSecondary` props have been removed. Use the `type` prop instead.
+    - StepIndicator: Default heading level has been removed. Consumers must now specify via the `headingLevel` prop.
+* SummaryBox now exposes sub-components (SummaryBoxHeading and SummaryBoxContent) for a more compositional API. Consumers will need to update their implementation to match.
+* In order to accommodate IconList as a named component, Icons themselves needed to be refactored. All use of ReactUSWDS icons now follows the following syntax: <Icon.{IconName} /> instead of <Icon{IconName />. Furthermore, icons are no longer imported individually. Instead, Icon (the class) is imported to then use any <Icon.{IconName}> consumers require.
+
+* Remove 1.x.x and 2.x.x deprecated properties ([#1988](https://github.com/zhaoshouren/react-uswds/issues/1988)) ([5dfadb1](https://github.com/zhaoshouren/react-uswds/commit/5dfadb14a3559e308c20d3b7852879a3aa0a3848))
+
+
+### Features
+
+* Accept Accordion headingLevel in items prop  ([#1905](https://github.com/zhaoshouren/react-uswds/issues/1905)) ([5090110](https://github.com/zhaoshouren/react-uswds/commit/509011019e05d6db33dc7269bcb56d57553ebdd0))
+* accept prop for heading level ([#1751](https://github.com/zhaoshouren/react-uswds/issues/1751)) ([#1865](https://github.com/zhaoshouren/react-uswds/issues/1865)) ([464756f](https://github.com/zhaoshouren/react-uswds/commit/464756fb1e189509bde02848cc09f992357d7e1c))
+* Add ability to pass through heading props ([#1895](https://github.com/zhaoshouren/react-uswds/issues/1895)) ([3830814](https://github.com/zhaoshouren/react-uswds/commit/383081423f0cf2d5f0d982c7486833d24aed3730))
+* Add className prop to Table component ([#2269](https://github.com/zhaoshouren/react-uswds/issues/2269)) ([cf082c5](https://github.com/zhaoshouren/react-uswds/commit/cf082c533b60317dfeeb4397a997514a586cf5a3))
+* Add compositional Banner components ([#2184](https://github.com/zhaoshouren/react-uswds/issues/2184)) ([f75e4ba](https://github.com/zhaoshouren/react-uswds/commit/f75e4ba06b305d4e47651fdfeaf8f564af8398fc))
+* Add focus method to ComboBox ref ([#1876](https://github.com/zhaoshouren/react-uswds/issues/1876)) ([c380a94](https://github.com/zhaoshouren/react-uswds/commit/c380a94c3c7dd2ae363fd0f58e80d93aa35cc43b))
+* add isInitiallyOpen option to modal ([#1971](https://github.com/zhaoshouren/react-uswds/issues/1971)) ([560564e](https://github.com/zhaoshouren/react-uswds/commit/560564e41572d270940db3f5029b240ef416c5b2))
+* Add Pagination component ([#2188](https://github.com/zhaoshouren/react-uswds/issues/2188)) ([4c021d1](https://github.com/zhaoshouren/react-uswds/commit/4c021d10c4041b21b9f2f5e433aed86e5c257dd6))
+* Add validationStatus prop to Dropdown ([#2365](https://github.com/zhaoshouren/react-uswds/issues/2365)) ([c314234](https://github.com/zhaoshouren/react-uswds/commit/c31423439cf6a30117fd327ee6cc2b1aacdb9124))
+* added customizable text control to file input ([#2417](https://github.com/zhaoshouren/react-uswds/issues/2417)) ([0a387be](https://github.com/zhaoshouren/react-uswds/commit/0a387beaa50612d9184bc8166283a131697e0c8c))
+* Adds headingLevel prop for Alert component ([#1928](https://github.com/zhaoshouren/react-uswds/issues/1928)) ([ce6de61](https://github.com/zhaoshouren/react-uswds/commit/ce6de61eeb072e3af346b89e808e0305114e59fa))
+* adds unbounded functionality to pagination ([#2418](https://github.com/zhaoshouren/react-uswds/issues/2418)) ([f9e7957](https://github.com/zhaoshouren/react-uswds/commit/f9e79579350f6890de9c111a7cb2467be029cf6e))
+* Allow intrinsic elements to be passed to Fieldset ([#1862](https://github.com/zhaoshouren/react-uswds/issues/1862)) ([85a0092](https://github.com/zhaoshouren/react-uswds/commit/85a0092bad776357ede2cd4e9aee9a5aa11912fd))
+* **ci:** add automerge priority label for Kodiak ([#1985](https://github.com/zhaoshouren/react-uswds/issues/1985)) ([9dc940e](https://github.com/zhaoshouren/react-uswds/commit/9dc940ec25246eb9c3af49b310a159134ce11203))
+* Deprecate default heading levels ([#1947](https://github.com/zhaoshouren/react-uswds/issues/1947)) ([512a901](https://github.com/zhaoshouren/react-uswds/commit/512a901d63a1a59739df12899454e6425e8ad9d0))
+* InputGroup component ([#2383](https://github.com/zhaoshouren/react-uswds/issues/2383)) ([5761db6](https://github.com/zhaoshouren/react-uswds/commit/5761db6e66db98c8299efb978bbe39fd259f1209))
+* Make search component extendable ([#2230](https://github.com/zhaoshouren/react-uswds/issues/2230)) ([9bd9137](https://github.com/zhaoshouren/react-uswds/commit/9bd91379722aa010ed5a9ee2c90daa852ce4c922))
+* Make Summary Box more flexible ([#1929](https://github.com/zhaoshouren/react-uswds/issues/1929)) ([a46ed35](https://github.com/zhaoshouren/react-uswds/commit/a46ed35d1da5a4d4fed86240487547462bed3ce4))
+* New Component: IconList ([#1691](https://github.com/zhaoshouren/react-uswds/issues/1691)) ([86589ac](https://github.com/zhaoshouren/react-uswds/commit/86589ac5c629df026cc01518d6d69fe9d8ddabe9))
+* Remove example app ([#2162](https://github.com/zhaoshouren/react-uswds/issues/2162)) ([1eb579e](https://github.com/zhaoshouren/react-uswds/commit/1eb579e4d18e3ee04d3f54fc3445e6539fce3ec6))
+* Update banner aria props with changes from USWDS ([#2384](https://github.com/zhaoshouren/react-uswds/issues/2384)) ([f8c359b](https://github.com/zhaoshouren/react-uswds/commit/f8c359b4afcfe998c492d916ad4c4ec44ee7b4f9))
+* upgrade to USWDS v3.1.0 ([#2203](https://github.com/zhaoshouren/react-uswds/issues/2203)) ([cd40e03](https://github.com/zhaoshouren/react-uswds/commit/cd40e03912b41b8f69c51278b20785e81a84468f))
+* USWDS 2.13.3 ([#2175](https://github.com/zhaoshouren/react-uswds/issues/2175)) ([fdeefc6](https://github.com/zhaoshouren/react-uswds/commit/fdeefc6d4e7e69fea50b6b0017dcc286979fbca5))
+
+
+### Bug Fixes
+
+* a11y: adds css to hide search clear button that causes accessibility issues ([#2467](https://github.com/zhaoshouren/react-uswds/issues/2467)) ([d19527f](https://github.com/zhaoshouren/react-uswds/commit/d19527f5ff043bc3be3cd789b3a8254a7580fe89))
+* added error param, test, story ([#2488](https://github.com/zhaoshouren/react-uswds/issues/2488)) ([42da85d](https://github.com/zhaoshouren/react-uswds/commit/42da85d7c7576c5ec408ca336edd4c2e32aa647b))
+* Adds validation styles to datepicker ([#2398](https://github.com/zhaoshouren/react-uswds/issues/2398)) ([161a931](https://github.com/zhaoshouren/react-uswds/commit/161a931f897edc38b1eb6aff22f36e5eb75c4388))
+* allow CharacterCount value ^ defaultValue ([#2397](https://github.com/zhaoshouren/react-uswds/issues/2397)) ([9de5b9d](https://github.com/zhaoshouren/react-uswds/commit/9de5b9dcd1b10e069cf672680f2685ced97d645c))
+* Creates new Select component to eventually replace Dropdown ([#2415](https://github.com/zhaoshouren/react-uswds/issues/2415)) ([75e9369](https://github.com/zhaoshouren/react-uswds/commit/75e936985cc1cd2f2052f902f0806c58446aca30))
+* Danger contributors check ([#2167](https://github.com/zhaoshouren/react-uswds/issues/2167)) ([c05fe06](https://github.com/zhaoshouren/react-uswds/commit/c05fe0626acbc5f8945700e4d6a51e37693fcee3))
+* **docs:** Fix typo in Storybook documentation template [#1914](https://github.com/zhaoshouren/react-uswds/issues/1914) ([#1949](https://github.com/zhaoshouren/react-uswds/issues/1949)) ([#1967](https://github.com/zhaoshouren/react-uswds/issues/1967)) ([7438640](https://github.com/zhaoshouren/react-uswds/commit/743864068823f8317a8bca2cab0c62cf8f6f4209))
+* **docs:** Fix typo in storybook file name ([#1934](https://github.com/zhaoshouren/react-uswds/issues/1934)) ([7514689](https://github.com/zhaoshouren/react-uswds/commit/7514689da58cbd9df0ce65cb3306cdd9eba2e30b))
+* Emit headingLevel type and do not emit type declarations for tests ([#2134](https://github.com/zhaoshouren/react-uswds/issues/2134)) ([a4501dd](https://github.com/zhaoshouren/react-uswds/commit/a4501ddc24c12bbe3cf1279edbcf650f9dccd412))
+* export SummaryBoxHeading and SummaryBoxContent ([#2100](https://github.com/zhaoshouren/react-uswds/issues/2100)) ([141ba8e](https://github.com/zhaoshouren/react-uswds/commit/141ba8e23ed4eb41f3d0533bc155550c02d0b3f6))
+* Fix FileInput in SSR ([#2367](https://github.com/zhaoshouren/react-uswds/issues/2367)) ([3d4845e](https://github.com/zhaoshouren/react-uswds/commit/3d4845e349bf940f0ba13f2680bc865c5f58d6ef))
+* Fix modal causing body padding to increase when unmounted ([#1899](https://github.com/zhaoshouren/react-uswds/issues/1899)) ([fb46e88](https://github.com/zhaoshouren/react-uswds/commit/fb46e8867f61781edf3393a359236bbcc45c626f))
+* Fix Tooltip positioning ([#1878](https://github.com/zhaoshouren/react-uswds/issues/1878)) ([f15fea0](https://github.com/zhaoshouren/react-uswds/commit/f15fea0b2ce037b48b8860e69a074de30aabfa91))
+* misapplied attribute ([#2396](https://github.com/zhaoshouren/react-uswds/issues/2396)) ([dafbb4e](https://github.com/zhaoshouren/react-uswds/commit/dafbb4e4f75c39e0a76f18a80934fcf2d1a3e770))
+* Render modal outside app root by default. ([#1890](https://github.com/zhaoshouren/react-uswds/issues/1890)) ([0828351](https://github.com/zhaoshouren/react-uswds/commit/082835186f8ba7d10941f2425e6db1570c57c9dd))
+* Set alternative text on SVG img icon in menu close button ([#2500](https://github.com/zhaoshouren/react-uswds/issues/2500)) ([ebdca5b](https://github.com/zhaoshouren/react-uswds/commit/ebdca5ba2b775e1ceacc4229c1191547bf98ea0d))
+* Unify icon usage ([#2411](https://github.com/zhaoshouren/react-uswds/issues/2411)) ([ef2be8d](https://github.com/zhaoshouren/react-uswds/commit/ef2be8dddbbfec21f3cedf606e2bddcaad57f7e7))
+
+
+### Documentation & Examples
+
+* 404 page template added ([#2017](https://github.com/zhaoshouren/react-uswds/issues/2017)) ([0c9474d](https://github.com/zhaoshouren/react-uswds/commit/0c9474ddedb2ad2f4cbb50357696814ddd4db99d))
+* add brandonlenz as a contributor for maintenance, and bug ([#2379](https://github.com/zhaoshouren/react-uswds/issues/2379)) ([31fba53](https://github.com/zhaoshouren/react-uswds/commit/31fba533444129486704b0d24e75d6c0fb09d65b))
+* Add documentation for how we use All Contributors ([#2378](https://github.com/zhaoshouren/react-uswds/issues/2378)) ([5aa9bda](https://github.com/zhaoshouren/react-uswds/commit/5aa9bda79237d90dd9538fc9362bb45b04ad8b81))
+* Add help section to releasing README ([#1867](https://github.com/zhaoshouren/react-uswds/issues/1867)) ([73e9094](https://github.com/zhaoshouren/react-uswds/commit/73e9094a82033bdee643316ff4db91a8460d999b))
+* Add maintainer docs as per TDR 95 ([#1903](https://github.com/zhaoshouren/react-uswds/issues/1903)) ([ad9bb44](https://github.com/zhaoshouren/react-uswds/commit/ad9bb440b3099760af92420bec0b3ba6a80f8013))
+* add rpdelaney as a contributor for maintenance, and infra ([#2380](https://github.com/zhaoshouren/react-uswds/issues/2380)) ([eb1271f](https://github.com/zhaoshouren/react-uswds/commit/eb1271fcd693a82ed7c123d5934d25dc9cdf2fad))
+* add sawyerh as a contributor for code ([#2375](https://github.com/zhaoshouren/react-uswds/issues/2375)) ([9169701](https://github.com/zhaoshouren/react-uswds/commit/91697014151bd312a77a5d48c4fa6ee424012d09))
+* add werdnanoslen as a contributor for code, and doc ([#2363](https://github.com/zhaoshouren/react-uswds/issues/2363)) ([d330621](https://github.com/zhaoshouren/react-uswds/commit/d330621065b1f8c71078c97858609f7b0ead5f73))
+* Callout outside contributors process ([#1969](https://github.com/zhaoshouren/react-uswds/issues/1969)) ([7881191](https://github.com/zhaoshouren/react-uswds/commit/78811918c1a38f773b5acf517181966ac5e58fe7))
+* fix typo and add alt download instructions ([#2281](https://github.com/zhaoshouren/react-uswds/issues/2281)) ([7508dfb](https://github.com/zhaoshouren/react-uswds/commit/7508dfb714d9a26d1a0787eb7032516e10fa082c))
+* Update All Contributors ([#1906](https://github.com/zhaoshouren/react-uswds/issues/1906)) ([b8b5667](https://github.com/zhaoshouren/react-uswds/commit/b8b5667153fa5d163af6ed2530e8378b3b8222ac))
+* Update docs for USWDS v3 ([#2205](https://github.com/zhaoshouren/react-uswds/issues/2205)) ([f5bf2e7](https://github.com/zhaoshouren/react-uswds/commit/f5bf2e70369f860e6af67305557ff626009c2585)), closes [#2202](https://github.com/zhaoshouren/react-uswds/issues/2202)
+* Update old references from USWDS 2.0 to USWDS 3.0 ([#2317](https://github.com/zhaoshouren/react-uswds/issues/2317)) ([6232c5c](https://github.com/zhaoshouren/react-uswds/commit/6232c5cbb90972457c6ee8b8c6ff5a441b4cd6bd))
+* Update releasing docs ([#2018](https://github.com/zhaoshouren/react-uswds/issues/2018)) ([6849dda](https://github.com/zhaoshouren/react-uswds/commit/6849ddab25c8674446dbd12a60f9ed1f9d1ce09c))
+
 ## [5.1.1](https://github.com/trussworks/react-uswds/compare/5.1.0...5.1.1) (2023-07-17)
 
 
